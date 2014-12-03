@@ -11,7 +11,7 @@ Flag xenctrl
   Description:        build Unix userspace bindings
   Default:            false
 
-Library xen_evtchn
+Library evtchn
   Pack:               true
   CompiledObject:     best
   Path:               lib
@@ -19,24 +19,32 @@ Library xen_evtchn
   Modules:            Eventchn, Generation, S
   BuildDepends:       unix, lwt, bigarray, sexplib.syntax
 
-Library xen_evtchn_xenctrl
+Library evtchn_unix
+  CompiledObject:     best
+  Path:               unix
+  Findlibname:        unix
+  Findlibparent:      evtchn
+  Modules:            Unix_events
+  BuildDepends:       lwt.unix, xen-evtchn
+
+Library evtchn_xenctrl
   Build$:             flag(xenctrl)
   CompiledObject:     best
   Path:               xenctrl
   Findlibname:        xenctrl
-  Findlibparent:      xen_evtchn
+  Findlibparent:      evtchn
   Modules:            Eventchn_dummy # to convince the build tools to make the package
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn
 
-Library xen_evtchn_unix_activations
+Library evtchn_unix_activations
   Build$:             flag(xenctrl)
   CompiledObject:     best
   Path:               xenctrl
   Findlibname:        activations
-  Findlibparent:      xen_evtchn_xenctrl
+  Findlibparent:      evtchn_xenctrl
   Modules:            Unix_activations 
   BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, xen-evtchn.xenctrl, lwt.syntax
 
