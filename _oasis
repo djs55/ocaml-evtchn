@@ -19,6 +19,14 @@ Library evtchn
   Modules:            Eventchn, Generation, S
   BuildDepends:       lwt, bigarray, sexplib.syntax
 
+Library evtchn_inheap
+  CompiledObject:     best
+  Path:               inheap
+  Findlibname:        inheap
+  Findlibparent:      evtchn
+  Modules:            Inheap_events
+  BuildDepends:       xen-evtchn, lwt
+
 Library evtchn_unix
   CompiledObject:     best
   Path:               unix

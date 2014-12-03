@@ -5,6 +5,8 @@ Xen-style event channel implementations
 
 This package builds the following subpackages:
 
+- xen-evtchn.inheap: implements signalling using Lwt condition variables
+  - (via module Inheap_events : S.EVENTS)
 - xen-evtchn.unix: implements signalling using Unix domain sockets
   - (via module Unix_events : S.EVENTS)
 - xen-gnt.xen: implements signalling via Xen event channels
