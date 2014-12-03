@@ -1,3 +1,9 @@
+trunk (unreleased)
+* Rename the "unix" subpackage to "xenctrl"
+* Add support for Unix IPC using Unix domain sockets
+* Add a subpackage for "xen" which will include the mirage-platform C
+  bindings eventually
+
 1.0.5 (19-Jun-2014)
 * Remove dependency on Unix which crept into 1.0.4
 
