@@ -18,11 +18,11 @@ Library xen_evtchn
   Modules:            Eventchn, Generation
   BuildDepends:       unix, lwt, bigarray
 
-Library xen_evtchn_unix
+Library xen_evtchn_xenctrl
   Build$:             flag(xenctrl)
   CompiledObject:     best
-  Path:               lib
-  Findlibname:        unix
+  Path:               xenctrl
+  Findlibname:        xenctrl
   Findlibparent:      xen_evtchn
   Modules:            Eventchn_dummy # to convince the build tools to make the package
   CSources:           eventchn_stubs.c
@@ -33,11 +33,11 @@ Library xen_evtchn_unix
 Library xen_evtchn_unix_activations
   Build$:             flag(xenctrl)
   CompiledObject:     best
-  Path:               lib
+  Path:               xenctrl
   Findlibname:        activations
-  Findlibparent:      xen_evtchn_unix
+  Findlibparent:      xen_evtchn_xenctrl
   Modules:            Unix_activations 
-  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, xen-evtchn.unix
+  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, xen-evtchn.xenctrl, lwt.syntax
 
 Executable linking
   Build$:             flag(tests)&&flag(xenctrl)
@@ -47,7 +47,7 @@ Executable linking
   Custom:             true
   Install:            false
   NativeOpt:          -dontlink unix
-  BuildDepends:       xen-evtchn, xen-evtchn.unix, xen-evtchn.unix.activations
+  BuildDepends:       xen-evtchn, xen-evtchn.xenctrl, xen-evtchn.xenctrl.activations
 
 Test portable
   Command:            ./main.native
