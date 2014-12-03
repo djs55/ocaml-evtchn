@@ -12,11 +12,12 @@ Flag xenctrl
   Default:            false
 
 Library xen_evtchn
+  Pack:               true
   CompiledObject:     best
   Path:               lib
   Findlibname:        xen-evtchn
-  Modules:            Eventchn, Generation
-  BuildDepends:       unix, lwt, bigarray
+  Modules:            Eventchn, Generation, S
+  BuildDepends:       unix, lwt, bigarray, sexplib.syntax
 
 Library xen_evtchn_xenctrl
   Build$:             flag(xenctrl)
