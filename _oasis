@@ -33,7 +33,7 @@ Library evtchn_xenctrl
   Path:               xenctrl
   Findlibname:        xenctrl
   Findlibparent:      evtchn
-  Modules:            Eventchn_dummy # to convince the build tools to make the package
+  Modules:            Xenctrl_events
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb

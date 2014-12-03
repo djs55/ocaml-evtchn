@@ -12,6 +12,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 *)
+open Evtchn
 
 (* The high-level interface creates one counter per event channel port.
    Every time the system receives a notification it increments the counter.

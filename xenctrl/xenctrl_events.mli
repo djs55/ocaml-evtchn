@@ -1,6 +1,5 @@
 (*
- * Copyright (C) 2006-2014 Citrix Inc.
- * Copyright (c) 2010 Anil Madhavapeddy <anil@recoil.org>
+ * Copyright (c) 2014 Citrix Systems Inc
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,5 +13,7 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *)
+open Evtchn
 
-(* This file deliberately left blank *)
+include S.EVENTS
+  with type 'a io = 'a Lwt.t
