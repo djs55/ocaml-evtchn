@@ -41,7 +41,7 @@ Library evtchn_xenctrl
   Path:               xenctrl
   Findlibname:        xenctrl
   Findlibparent:      evtchn
-  Modules:            Xenctrl_events
+  Modules:            Xenctrl_events, Unix_activations
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb
