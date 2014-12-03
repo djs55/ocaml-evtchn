@@ -37,16 +37,7 @@ Library evtchn_xenctrl
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb
-  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn
-
-Library evtchn_unix_activations
-  Build$:             flag(xenctrl)
-  CompiledObject:     best
-  Path:               xenctrl
-  Findlibname:        activations
-  Findlibparent:      evtchn_xenctrl
-  Modules:            Unix_activations 
-  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, xen-evtchn.xenctrl, lwt.syntax
+  BuildDepends:       unix, lwt, lwt.unix, bigarray, xen-evtchn, lwt.syntax
 
 Executable linking
   Build$:             flag(tests)&&flag(xenctrl)
@@ -56,7 +47,7 @@ Executable linking
   Custom:             true
   Install:            false
   NativeOpt:          -dontlink unix
-  BuildDepends:       xen-evtchn, xen-evtchn.xenctrl, xen-evtchn.xenctrl.activations
+  BuildDepends:       xen-evtchn, xen-evtchn.xenctrl
 
 Test portable
   Command:            ./main.native
