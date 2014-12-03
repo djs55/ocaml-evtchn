@@ -1,32 +1,44 @@
 # OASIS_START
-# DO NOT EDIT (digest: 276ae14b2a9464e7342f1332b66d2d86)
+# DO NOT EDIT (digest: 4696d6bc21026ac58098188db994c9d8)
 version = "1.0.5"
 description = "Xen event channel bindings"
-requires = "unix lwt bigarray"
-archive(byte) = "xen_evtchn.cma"
-archive(byte, plugin) = "xen_evtchn.cma"
-archive(native) = "xen_evtchn.cmxa"
-archive(native, plugin) = "xen_evtchn.cmxs"
-exists_if = "xen_evtchn.cma"
+requires = "lwt bigarray sexplib.syntax"
+archive(byte) = "evtchn.cma"
+archive(byte, plugin) = "evtchn.cma"
+archive(native) = "evtchn.cmxa"
+archive(native, plugin) = "evtchn.cmxs"
+exists_if = "evtchn.cma"
+package "xenctrl" (
+ version = "1.0.5"
+ description = "Xen event channel bindings"
+ requires = "unix lwt lwt.unix bigarray xen-evtchn lwt.syntax"
+ archive(byte) = "evtchn_xenctrl.cma"
+ archive(byte, plugin) = "evtchn_xenctrl.cma"
+ archive(native) = "evtchn_xenctrl.cmxa"
+ archive(native, plugin) = "evtchn_xenctrl.cmxs"
+ exists_if = "evtchn_xenctrl.cma"
+)
+
+package "xen" (
+ version = "1.0.5"
+ description = "Xen event channel bindings"
+ requires = "lwt sexplib xen-evtchn lwt.syntax"
+ archive(byte) = "evtchn_xen.cma"
+ archive(byte, plugin) = "evtchn_xen.cma"
+ archive(native) = "evtchn_xen.cmxa"
+ archive(native, plugin) = "evtchn_xen.cmxs"
+ exists_if = "evtchn_xen.cma"
+)
+
 package "unix" (
  version = "1.0.5"
  description = "Xen event channel bindings"
- requires = "unix lwt lwt.unix bigarray xen-evtchn"
- archive(byte) = "xen_evtchn_unix.cma"
- archive(byte, plugin) = "xen_evtchn_unix.cma"
- archive(native) = "xen_evtchn_unix.cmxa"
- archive(native, plugin) = "xen_evtchn_unix.cmxs"
- exists_if = "xen_evtchn_unix.cma"
- package "activations" (
-  version = "1.0.5"
-  description = "Xen event channel bindings"
-  requires = "unix lwt lwt.unix bigarray xen-evtchn xen-evtchn.unix"
-  archive(byte) = "xen_evtchn_unix_activations.cma"
-  archive(byte, plugin) = "xen_evtchn_unix_activations.cma"
-  archive(native) = "xen_evtchn_unix_activations.cmxa"
-  archive(native, plugin) = "xen_evtchn_unix_activations.cmxs"
-  exists_if = "xen_evtchn_unix_activations.cma"
- )
+ requires = "lwt.unix xen-evtchn"
+ archive(byte) = "evtchn_unix.cma"
+ archive(byte, plugin) = "evtchn_unix.cma"
+ archive(native) = "evtchn_unix.cmxa"
+ archive(native, plugin) = "evtchn_unix.cmxs"
+ exists_if = "evtchn_unix.cma"
 )
 # OASIS_STOP
 
