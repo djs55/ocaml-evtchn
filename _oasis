@@ -17,7 +17,7 @@ Library evtchn
   Path:               lib
   Findlibname:        xen-evtchn
   Modules:            Eventchn, Generation, S
-  BuildDepends:       unix, lwt, bigarray, sexplib.syntax
+  BuildDepends:       lwt, bigarray, sexplib.syntax
 
 Library evtchn_unix
   CompiledObject:     best
@@ -26,6 +26,14 @@ Library evtchn_unix
   Findlibparent:      evtchn
   Modules:            Unix_events
   BuildDepends:       lwt.unix, xen-evtchn
+
+Library evtchn_xen
+  CompiledObject:     best
+  Path:               xen
+  Findlibname:        xen
+  Findlibparent:      evtchn
+  Modules:            Xen_events, Activations
+  BuildDepends:       lwt, sexplib, xen-evtchn, lwt.syntax
 
 Library evtchn_xenctrl
   Build$:             flag(xenctrl)
