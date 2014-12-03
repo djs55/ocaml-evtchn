@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 4696d6bc21026ac58098188db994c9d8)
+# DO NOT EDIT (digest: 748e91ae1d3e52b2fa34e8d59b8fd091)
 version = "1.0.5"
 description = "Xen event channel bindings"
 requires = "lwt bigarray sexplib.syntax"
@@ -39,6 +39,17 @@ package "unix" (
  archive(native) = "evtchn_unix.cmxa"
  archive(native, plugin) = "evtchn_unix.cmxs"
  exists_if = "evtchn_unix.cma"
+)
+
+package "inheap" (
+ version = "1.0.5"
+ description = "Xen event channel bindings"
+ requires = "xen-evtchn lwt"
+ archive(byte) = "evtchn_inheap.cma"
+ archive(byte, plugin) = "evtchn_inheap.cma"
+ archive(native) = "evtchn_inheap.cmxa"
+ archive(native, plugin) = "evtchn_inheap.cmxs"
+ exists_if = "evtchn_inheap.cma"
 )
 # OASIS_STOP
 

@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: bbcc38b13f7c0c0e09cf95ae2339578d)
+# DO NOT EDIT (digest: 6ff0485e3f2616279d13632fe126d8de)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -22,6 +22,12 @@ true: annot, bin_annot
 <lib/*.ml{,i,y}>: pkg_bigarray
 <lib/*.ml{,i,y}>: pkg_lwt
 <lib/*.ml{,i,y}>: pkg_sexplib.syntax
+# Library evtchn_inheap
+"inheap/evtchn_inheap.cmxs": use_evtchn_inheap
+<inheap/*.ml{,i,y}>: pkg_bigarray
+<inheap/*.ml{,i,y}>: pkg_lwt
+<inheap/*.ml{,i,y}>: pkg_sexplib.syntax
+<inheap/*.ml{,i,y}>: use_evtchn
 # Library evtchn_unix
 "unix/evtchn_unix.cmxs": use_evtchn_unix
 <unix/*.ml{,i,y}>: pkg_bigarray
