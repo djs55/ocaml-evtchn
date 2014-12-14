@@ -16,7 +16,7 @@ Library evtchn
   CompiledObject:     best
   Path:               lib
   Findlibname:        xen-evtchn
-  Modules:            Eventchn, Generation, S
+  Modules:            Generation, S
   BuildDepends:       lwt, bigarray, sexplib.syntax
 
 Library evtchn_inheap
@@ -40,7 +40,7 @@ Library evtchn_xen
   Path:               xen
   Findlibname:        xen
   Findlibparent:      evtchn
-  Modules:            Xen_events, Activations
+  Modules:            Xen_events, Activations, Eventchn
   BuildDepends:       lwt, sexplib, xen-evtchn, lwt.syntax
 
 Library evtchn_xenctrl
@@ -49,7 +49,7 @@ Library evtchn_xenctrl
   Path:               xenctrl
   Findlibname:        xenctrl
   Findlibparent:      evtchn
-  Modules:            Xenctrl_events, Unix_activations
+  Modules:            Xenctrl_events, Unix_activations, Eventchn
   CSources:           eventchn_stubs.c
   CCLib:              -L/usr/lib/xen-4.2/lib -lxenctrl
   CCOpt:              -Wno-unused-function -g -ggdb
